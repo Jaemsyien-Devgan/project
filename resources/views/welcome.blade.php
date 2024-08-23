@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        cursor: grab;
+        -webkit-user-select: none; /* Untuk Chrome, Safari, dan Opera */
+        -moz-user-select: none; /* Untuk Firefox */
+        -ms-user-select: none; /* Untuk IE dan Edge */
+    }
+    .no-scrollbar:active {
+        cursor: grabbing;
+    }
+
+</style>
 
     @vite('resources/css/app.css')
     <script src="https://cdn.tailwindcss.com"></script>
