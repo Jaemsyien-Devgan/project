@@ -6,22 +6,13 @@
     <title>Portfolio</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-    .no-scrollbar::-webkit-scrollbar {
-        display: none;
+    */* Mengatur seleksi teks di seluruh halaman */
+    * {
+    -webkit-user-select: none; /* Untuk Chrome, Safari, dan Opera */
+    -moz-user-select: none;    /* Untuk Firefox */
+    -ms-user-select: none;     /* Untuk IE dan Edge */
     }
-    .no-scrollbar {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-        cursor: grab;
-        -webkit-user-select: none; /* Untuk Chrome, Safari, dan Opera */
-        -moz-user-select: none; /* Untuk Firefox */
-        -ms-user-select: none; /* Untuk IE dan Edge */
-    }
-    .no-scrollbar:active {
-        cursor: grabbing;
-    }
-
-</style>
+    </style>
 
     @vite('resources/css/app.css')
     <script src="https://cdn.tailwindcss.com"></script>
@@ -35,7 +26,9 @@
     @include('layouts.myskills')
     @include('layouts.qualification')
     @include('layouts.portfolio')
-    @include('layouts.hobi')
+    @include('layouts.service')
+    @include('layouts.testimonials')
+    {{-- @include('layouts.hobi') --}}
     @include('layouts.footer')
 
 

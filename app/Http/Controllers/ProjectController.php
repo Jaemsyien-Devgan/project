@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\project;
+use App\Models\testimonials;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 // use Barryvdh\DomPDF\Facade\Pdf;
 // use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use Illuminate\Http\Request;
 use PDF;
+use GiauPan\QRCode\Facades\QRCode;
+use Illuminate\Support\Facades\File;
+use LaravelQRCode\Facades\QRCode as FacadesQRCode;
 
 class ProjectController extends Controller
 {
@@ -16,7 +21,7 @@ class ProjectController extends Controller
     public function index()
     {
         //
-        $project = project::orderBy('created_at', 'desc')->get();
+        $project = project::orderBy('created_at', 'asc')->get();
         return view('project.list', [
         'project' => $project
         ]);
@@ -29,7 +34,7 @@ class ProjectController extends Controller
             'date' => date('m/d/Y'),
             'project' => $project
         ];
-        $pdf = PDF::loadView('myPDF', $data);
+        $pdf = FacadePdf::loadView('myPDF', $data);
         return $pdf->stream('laporan-project.pdf');
     }
 
@@ -79,7 +84,8 @@ class ProjectController extends Controller
     public function show()
     {
         $project = project::all();
-        return view('welcome', compact('project'));
+        $testimonials = testimonials::all();
+        return view('welcome', compact('project', 'testimonials'));
     }
 
     /**
@@ -137,8 +143,14 @@ class ProjectController extends Controller
     public function destroy(string $id)
     {
         $project = project::findorFail($id);
+        // Dapatkan path gambar dari project
+    $imagePath = 'img/crousel/' . $project->image;
+
+    // Cek apakah file gambar ada di storage dan hapus jika ada
+    if (File::exists($imagePath)) {
+        File::delete($imagePath);
+    }
         $project->delete();
         return redirect()->route('project.index')->with('success', 'Project deleted successfully');
     }
-
 }

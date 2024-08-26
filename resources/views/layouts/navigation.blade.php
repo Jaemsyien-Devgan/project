@@ -24,6 +24,10 @@
                         {{ __('todolist') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('testimonials.index')" :active="request()->routeIs('testimonials.index')">
+                        {{ __('testimonials') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 

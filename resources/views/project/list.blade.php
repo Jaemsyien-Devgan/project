@@ -42,9 +42,9 @@
                         @if ($project->isNotEmpty())
                             @foreach ($project as $item)
                             <tr>
-                                <td class="border border-green-600 p-1 text-[#2f4f4f] align-middle">{{ $item->id }}</td>
+                                <td class="border border-green-600 p-1 text-[#2f4f4f] align-middle">{{ $loop->iteration }}</td>
                                 <td class="border border-green-600 p-1 text-[#2f4f4f] align-middle">{{ $item->judul }}</td>
-                                <td class="border border-green-600 p-1 text-[#2f4f4f] align-middle">{{ $item->deskripsi }}</td>
+                                <td class="w-16 border border-green-600 p-1 text-[#2f4f4f] align-middle">{{ $item->deskripsi }}</td>
                                 <td class="border border-green-600 p-1 text-[#2f4f4f] align-middle">
                                     @if ($item->image != "")
                                         <img src="{{ asset('img/crousel/' . $item->image) }}" alt="{{ $item->image }}" class="w-full h-16 object-cover mx-auto">
